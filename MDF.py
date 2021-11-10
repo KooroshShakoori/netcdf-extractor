@@ -1,16 +1,19 @@
-from DF import dataframe
+import DF
 
-class Multilevel(dataframe):
+class Multilevel():
 
     #PATH is the list paths
     def __init__(self, PATH, lat, lon):
+        
+        self.lat = lat
+        self.lon = lon
         
         #this function is to get the multilevel dataframes in one unified dataframe
         self.PATH = PATH
         frames = []
         for path in self.PATH:
-            super().__init__(self, path, lat, lon)
-            frames.append(self.data())
+            df = DF.dataframe(path, self.lat, self.lon)
+            frames.append(df.data())
         self.frames = frames
 
     def df(self):

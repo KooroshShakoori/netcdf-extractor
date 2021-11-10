@@ -40,9 +40,8 @@ class Path():
 
         l1 , l2 = self.path_create()
         for l in [l1, l2]:
-
+            ld = []
             if bool(re.search('\d', l[0])):
-                ld = []
                 for i in self.allfiles()[1]:
                     matching = [s for s in l if i in s]
                     ld.append(matching)

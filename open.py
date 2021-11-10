@@ -1,6 +1,6 @@
-from DF import dataframe
-from MDF import Multilevel
-from path import Path
+import DF
+import MDF
+import path
 
 class Open():
     def __init__(self, path, lat, lon):
@@ -10,14 +10,17 @@ class Open():
     
     def process(self):
 
-        listd , listnd = Path.seperator(self.path)
+        p = path.Path(self.path)    
+        listd , listnd = p.seperator()
         dff = []
         for i in listd:
-            data = Multilevel(i, self.lat, self.lon).df()
+            M = MDF.Multilevel(i, self.lat, self.lon)
+            data = M.df()
             dff.extend(data)
 
         for i in listnd:
-            data = dataframe().data()
+            d = DF.dataframe(i, self.lat, self.lon)
+            data = d.data()
             dff.append(data)
 
         return dff

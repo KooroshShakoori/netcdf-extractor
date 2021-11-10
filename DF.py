@@ -1,10 +1,10 @@
-from File import Read
+import File
 import pandas as pd
 
-class dataframe(Read):
+class dataframe(File.Read):
 
     def __init__(self, path, lat, lon):
-        super.__init__(path)
+        super().__init__(path)
         #lat and lon have to be in index format 
         self.lat = lat
         self.lon = lon
