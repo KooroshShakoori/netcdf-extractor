@@ -2,7 +2,7 @@ from os import walk
 import re
 
 #to use this module we need to make a PATH object and use the PATH.path_create to achieve the path list
-
+#as in this moment path module is fixed and can provide expected output
 class Path():
     
     def __init__(self, path):
@@ -36,18 +36,27 @@ class Path():
 
         return l1, l2
 
-    def seperator(self):
-
-        l1 , l2 = self.path_create()
-        for l in [l1, l2]:
-            ld = []
-            if bool(re.search('\d', l[0])):
-                for i in self.allfiles()[1]:
-                    matching = [s for s in l if i in s]
-                    ld.append(matching)
-        
-
+    def Filter(self):
+    # Search data based on regular expression in the list
+        mlist = []
+        for i in self.allfiles()[1]:
+            l = [val for val in self.path_create()[0] if re.search(i, val)]
+            if bool(len(l) > 0):
+                mlist.append(l)
+                
             else:
-                lnd = l
+                pass
+        
+        return mlist
+    
+    def out(self):
+        ld = self.Filter()
+        lnd = self.path_create()[1]
+        return ld , lnd
 
-        return ld, lnd
+
+if __name__ == '__main__':
+    p = Path('/mnt/f/GCM/cmip6/canesm5/historical/nn/data')
+    x, y = p.out()
+    print(x)
+    print(y)
