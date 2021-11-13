@@ -1,7 +1,9 @@
 import DF
 import MDF
 import path
+import pandas as pd
 
+#variable of path in this class should be the root of all nc files
 class Open():
     def __init__(self, path, lat, lon):
         self.path = path
@@ -11,18 +13,22 @@ class Open():
     def process(self):
 
         p = path.Path(self.path)    
-        listd , listnd = p.seperator()
-        dff = []
+        listd , listnd = p.out()
+        mdict = dict()
         for i in listd:
             M = MDF.Multilevel(i, self.lat, self.lon)
             data = M.df()
-            dff.extend(data)
+            d1 = data.to_dict()
+            mdict.update(d1)
 
         for i in listnd:
             d = DF.dataframe(i, self.lat, self.lon)
             data = d.data()
-            dff.append(data)
+            d2 = data.to_dict()
+            mdict.update(d2)
+        
+        df1 = pd.DataFrame(mdict)
 
-        return dff
+        return df1
 
 

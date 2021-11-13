@@ -12,3 +12,7 @@ class Read():
         self.file = nc(self.path, mode='r')
         self.name = self.file.variable_id
     
+if __name__ == '__main__':
+    F = Read('/mnt/f/GCM/cmip6/canesm5/historical/nn/data/hus/hus2.nc')
+    print(F.file['hus'][:, 1, 10, 11])
+    print(F.name)

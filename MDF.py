@@ -1,4 +1,5 @@
 import DF
+import pandas as pd
 
 class Multilevel():
 
@@ -8,20 +9,15 @@ class Multilevel():
         self.lat = lat
         self.lon = lon
         
-        #this function is to get the multilevel dataframes in one unified dataframe
+        #this function is designed to get the multilevel dataframes in one unified dataframe
         self.PATH = PATH
+
+    def df(self):
         frames = []
         for path in self.PATH:
             df = DF.dataframe(path, self.lat, self.lon)
             frames.append(df.data())
-        self.frames = frames
-
-    def df(self):
-        #to override the function data() in DF.dataframe()
-        df = pd.concat(self.frames)
-        return df
-
-        
-
-
-
+        df = pd.concat(frames)
+        #we can use df.shape[1] in range function
+        df1 = df.set_index(pd.Index(list(range(23360))))
+        return df1

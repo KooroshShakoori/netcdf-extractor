@@ -4,7 +4,8 @@ import re
 #to use this module we need to make a PATH object and use the PATH.path_create to achieve the path list
 #as in this moment path module is fixed and can provide expected output
 class Path():
-    
+    # maybe use pop() to remove 2 last part of self.path as a list and use it to create fullname
+    # a function can be used to achieve this string
     def __init__(self, path):
 
         self.path = path
@@ -25,12 +26,12 @@ class Path():
         for name in self.allfiles()[0]:
             if bool(re.search('\d', name)):
                 filename = re.split('\d', name)[0]
-                fullname = f'{filename}/{name}'
+                fullname = f'/mnt/f/GCM/cmip6/canesm5/historical/nn/data/{filename}/{name}'
                 l1.append(fullname)
 
             else:
                 filename = re.split('\\.', name)[0]
-                fullname = f'{filename}/{name}'
+                fullname = f'/mnt/f/GCM/cmip6/canesm5/historical/nn/data/{filename}/{name}'
                 l2.append(fullname)
         
 

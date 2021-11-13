@@ -1,8 +1,9 @@
 import open
+import pandas as pd
 # print(dir())
 
 
 
-GP1 = open.Open('/mnt/f/gcm/cmip6/canesm5/historical/nn', 45, 16)
+GP1 = open.Open('/mnt/f/gcm/cmip6/canesm5/historical/nn/data/', 45, 16)
 dataframe = GP1.process()
-pd.to_csv('/mnt/f/gcm/cmip6/canesm5/historical/nn/gg.csv')
+dataframe.to_csv('/mnt/f/gcm/cmip6/canesm5/historical/nn/gg.csv')
