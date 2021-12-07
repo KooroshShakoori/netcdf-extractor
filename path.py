@@ -26,12 +26,12 @@ class Path():
         for name in self.allfiles()[0]:
             if bool(re.search('\d', name)):
                 filename = re.split('\d', name)[0]
-                fullname = f'/mnt/f/GCM/cmip6/canesm5/historical/nn/data/{filename}/{name}'
+                fullname = f'/mnt/h/GCM/CMIP6/CanESM5/historical/{filename}/{name}'
                 l1.append(fullname)
 
             else:
                 filename = re.split('\\.', name)[0]
-                fullname = f'/mnt/f/GCM/cmip6/canesm5/historical/nn/data/{filename}/{name}'
+                fullname = f'/mnt/h/GCM/CMIP6/CanESM5/historical/{filename}/{name}'
                 l2.append(fullname)
         
 
