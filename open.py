@@ -12,20 +12,21 @@ class Open():
     
     def process(self):
 
-        p = path.Path(self.path)    
-        listd , listnd = p.out()
+        p = path.Path_generator(self.path)    
+        file_list = p.path_lists()
         mdict = dict()
-        for i in listd:
-            M = MDF.Multilevel(i, self.lat, self.lon)
-            data = M.df()
-            d1 = data.to_dict()
-            mdict.update(d1)
+        for i in file_list:
+            if len(i) == 1:
+                d = DF.dataframe(i, self.lat, self.lon)
+                data = d.data()
+                d2 = data.to_dict()
+                mdict.update(d2)
 
-        for i in listnd:
-            d = DF.dataframe(i, self.lat, self.lon)
-            data = d.data()
-            d2 = data.to_dict()
-            mdict.update(d2)
+            else:
+                M = MDF.Multilevel(i, self.lat, self.lon)
+                data = M.df()
+                d1 = data.to_dict()
+                mdict.update(d1)
         
         df1 = pd.DataFrame(mdict)
 
