@@ -14,7 +14,7 @@ class dataframe(File.Read):
         #the conditional statement below is for deviding the files with and without plev variable(4 is for files without a plev value)(probably will cause inconsistency 
         #with multiple filed variable without a plev like ncep files)---> therefore needs to be redesigned
         if len(self.file.dimensions) == 4:
-            data = list(self.file[self.name][:, self.lat, self.lon])[-23360:]
+            data = list(self.file[self.name][:, self.lat, self.lon])
             df = pd.DataFrame({self.name : data})
             return df
 

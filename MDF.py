@@ -19,5 +19,5 @@ class Multilevel():
             frames.append(df.data())
         df = pd.concat(frames)
         #we can use df.shape[1] in range function
-        df1 = df.set_index(pd.Index(list(range(23360))))
+        df1 = df.set_index(pd.Index(list(range(df.shape[0]))))
         return df1

@@ -64,7 +64,7 @@ class Path_generator():
 
 
 if __name__ == '__main__':
-    p = Path_generator('/mnt/f/GCM/cmip6/canesm5/historical/nn/data')
+    p = Path_generator('/mnt/f/GCM/cmip6/canesm5/ssp585/')
     x = p.path_lists()
     print(x)
     

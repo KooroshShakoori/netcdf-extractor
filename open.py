@@ -17,7 +17,7 @@ class Open():
         mdict = dict()
         for i in file_list:
             if len(i) == 1:
-                d = DF.dataframe(i, self.lat, self.lon)
+                d = DF.dataframe(i[0], self.lat, self.lon)
                 data = d.data()
                 d2 = data.to_dict()
                 mdict.update(d2)
