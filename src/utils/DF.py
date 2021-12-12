@@ -1,7 +1,8 @@
-import File
+from src.utils.Files import Read
+
 import pandas as pd
 
-class dataframe(File.Read):
+class dataframe(Read):
 
     def __init__(self, path, lat, lon):
         super().__init__(path)

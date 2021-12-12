@@ -1,5 +1,8 @@
-import DF
+from src.utils.DF import dataframe
+
 import pandas as pd
+
+
 
 class Multilevel():
 
@@ -15,7 +18,7 @@ class Multilevel():
     def df(self):
         frames = []
         for path in self.PATH:
-            df = DF.dataframe(path, self.lat, self.lon)
+            df = dataframe(path, self.lat, self.lon)
             frames.append(df.data())
         df = pd.concat(frames)
         #we can use df.shape[1] in range function

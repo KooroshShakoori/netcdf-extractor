@@ -1,7 +1,7 @@
 from os import walk
-import re
 from pathlib import Path
 
+import re #it is used for the older code that is commented below working code
 #to use this module we need to make a PATH object and use the PATH.path_create to achieve the path list
 #as in this moment path module is fixed and can provide expected output
 class Path_generator():
